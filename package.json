@@ -1,7 +1,7 @@
 {
   "name": "hotshot",
   "version": "1.0.0",
-  "description": "Screenshot tool for innoq.com",
+  "description": "Takes screenshots of DOM elements",
   "main": "index.js",
   "repository": "https://gitlab.innoq.com/innoq/hotshot",
   "author": "Robert Glaser",
