@@ -1,0 +1,13 @@
+{
+  "name": "hotshot",
+  "version": "1.0.0",
+  "description": "Screenshot tool for innoq.com",
+  "main": "index.js",
+  "repository": "https://gitlab.innoq.com/innoq/hotshot",
+  "author": "Robert Glaser",
+  "license": "Apache 2.0",
+  "private": true,
+  "dependencies": {
+    "express": "^4.16.3"
+  }
+}
