@@ -3,12 +3,12 @@ const url = require('url')
 const express = require('express')
 const app = express()
 
-const HOST = process.argv[2]
+const TARGET_HOST = process.env.TARGET_HOST
 const TIMEOUT = 30000
 const PORT = process.env.PORT || 5000;
 
-if (!HOST) {
-  console.error("💥 Missing host name, exiting.")
+if (!TARGET_HOST) {
+  console.error("💥 Missing target host name, exiting.")
   process.exit(1)
 }
 
@@ -21,7 +21,7 @@ app.get('/', async (req, res) => {
     res.end()
   }
 
-  const target = url.resolve(HOST, path)
+  const target = url.resolve(TARGET_HOST, path)
 
   console.log(`📸 ${target} => ${selector}`)
 
