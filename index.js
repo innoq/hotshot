@@ -5,6 +5,7 @@ const app = express()
 
 const HOST = process.argv[2]
 const TIMEOUT = 30000
+const PORT = process.env.PORT || 5000;
 
 if (!HOST) {
   console.error("💥 Missing host name, exiting.")
@@ -30,7 +31,7 @@ app.get('/', async (req, res) => {
   res.send(screenshot)
 })
 
-app.listen(5000, () => console.log('Hotshot listening on port 5000.'))
+app.listen(PORT, () => console.log(`Hotshot listening on port ${PORT}.`))
 
 async function takeScreenshot (url, selector, padding = 0) {
   const browser = await puppeteer.launch({
