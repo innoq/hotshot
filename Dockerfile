@@ -2,4 +2,4 @@ FROM alekzonder/puppeteer:latest
 EXPOSE 5000
 COPY . /app
 WORKDIR /app
-CMD ["node", "index.js", "https://www.innoq.com"]
+CMD ["node", "index.js"]
