@@ -11,11 +11,11 @@ Build image:
 Start server:
 
     $ docker run -p 5000:5000 \
-                 --shm-size 1G innoq/hotshot \
-                 -e TARGET_HOST='https://www.innoq.com'
+                 --shm-size 1G \
+                 -e TARGET_HOST='https://www.innoq.com' innoq/hotshot
 
 Request a screenshot:
 
-    $ curl -X GET http://localhost:5000 \
-           --data-urlencode "path=/path/on/innoq" \
+    $ curl -G http://localhost:5000 \
+           --data-urlencode "path=/path/to/content" \
            --data-urlencode "selector=.my-css-class"
