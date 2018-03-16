@@ -25,10 +25,15 @@ app.get('/', async (req, res) => {
 
   console.log(`📸 ${target} => ${selector}`)
 
-  const screenshot = await takeScreenshot(target, selector)
-
-  res.type('image/png')
-  res.send(screenshot)
+  try {
+    const screenshot = await takeScreenshot(target, selector)
+    res.type('image/png')
+    res.send(screenshot)
+  } catch(e) {
+    console.error(e)
+    res.status(500)
+    res.end()
+  }
 })
 
 app.listen(PORT, () => console.log(`Hotshot listening on port ${PORT}.`))
