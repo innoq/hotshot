@@ -16,6 +16,6 @@ Start server:
 
 Request a screenshot:
 
-    $ curl -G http://localhost:5000 \
+    $ curl -G http://localhost:5000/shoot \
            --data-urlencode "path=/path/to/content" \
            --data-urlencode "selector=.my-css-class"

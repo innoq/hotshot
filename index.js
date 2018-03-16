@@ -12,7 +12,11 @@ if (!TARGET_HOST) {
   process.exit(1)
 }
 
-app.get('/', async (req, res) => {
+app.get('/', (req, res) => {
+  res.send("GET /shoot?path=…&selector=… to take a screenshot")
+})
+
+app.get('/shoot', async (req, res) => {
   const path = req.query.path
   const selector = req.query.selector
 
