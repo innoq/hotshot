@@ -18,7 +18,7 @@ app.get('/', async (req, res) => {
 
   if (!path || !selector) {
     res.status(422)
-    res.end()
+    return res.end()
   }
 
   const target = url.resolve(TARGET_HOST, path)
