@@ -4,8 +4,8 @@ const express = require('express')
 const app = express()
 
 const TARGET_HOST = process.env.TARGET_HOST
-const TIMEOUT = 5000
-const PORT = process.env.PORT || 5000;
+const TIMEOUT = process.env.TIMEOUT || 5000
+const PORT = process.env.PORT || 5000
 
 if (!TARGET_HOST) {
   console.error("💥 Missing target host name, exiting.")
