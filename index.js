@@ -19,6 +19,7 @@ app.get('/', (req, res) => {
 app.get('/shoot', async (req, res) => {
   const path = req.query.path
   const selector = req.query.selector
+  const padding = parseInt(req.query.padding) || 0
 
   if (!path || !selector) {
     res.status(422)
@@ -30,7 +31,7 @@ app.get('/shoot', async (req, res) => {
   console.log(`📸 ${target} => ${selector}`)
 
   try {
-    const screenshot = await takeScreenshot(target, selector)
+    const screenshot = await takeScreenshot(target, selector, padding)
     res.type('image/png')
     res.send(screenshot)
   } catch(e) {
@@ -60,7 +61,6 @@ async function takeScreenshot (url, selector, padding = 0) {
   }, selector)
 
   const screenshot = await page.screenshot({
-    // path: 'element.png',
     clip: {
       x: rect.left - padding,
       y: rect.top - padding,
