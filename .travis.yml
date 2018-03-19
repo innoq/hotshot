@@ -1,0 +1,13 @@
+language: node_js
+node_js:
+- '9'
+script:
+- npm test
+deploy:
+  provider: heroku
+  api_key:
+    secure: J6ANIhEr5gW2TybZbDDAkbotQpi8L8A9cq72DxJiX619EMIl8sREUcNEZhOw8GJC5gVZDe6khhWn+tpvXzV25U84N3idY+UeSpZkpCb41VtAPgi0CRpVqiPgLWIP1S99cxMT01W18FbpGAvg85AFUKfF2qJQ8KxuOglQ0DAAg83UwtrqYdSZ7qGBmwpq8EPiPeuckc/o5ljhs65/lU2uKUQoE9eg3L3DOqNCd/8bvXEQ6zyJeHBjqLL8w2dMBJI4SRo3sBM0ie13LHTBidjgi/FvRSZQZsBb6j8OKsqskuNcBo+pfYAwZ8JdRnjupNhp05GcNraf0T7nB0c64yf21sJ08GKDx21WUTE+Xct0qWfEf/1o+obld0M/nmifdwUwTI1+U92d6HcwKJbHbR5CIcqp0TMwDvIhq575nfDz0jxdpCZeuGFKFdnd9F0rp3+RA+W+u0MPY+srYQE9Yceq4FyfT0r5Bqw9B1q1k10y/+qknqqDv+p6ygN1PEkChvG8mMsBzsdPuweapDZ731J12YeiqiprtMXhRg33CQtCHTg2nPumJhoPX52DuCcBCT7yR+cec5uF0kuypL4IpHEleqzsFH2YWpjKTnXKlHlzscuksB3ZqXkKRmhaFM5PODwM7IlSOZAuR/9IiyUu6CGThJy3ZAwdZ5PueRbHj6CP2P0=
+  app: hotshot-production
+  on:
+    repo: innoq/hotshot
+    branch: master
