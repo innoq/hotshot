@@ -2,6 +2,8 @@
 
 Takes screenshots of DOM elements, like Jake Gyllenhaal 📸
 
+Check out the [blog post](https://www.innoq.com/en/blog/screenshot-dom-elements-puppeteer/).
+
 ## Usage
 
 Build image:
