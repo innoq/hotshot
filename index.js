@@ -33,8 +33,7 @@ app.get('/shoot', async (req, res) => {
     if (screenshot) {
       res.type('image/png')
       res.send(screenshot)
-    }
-    else {
+    } else {
       res.status(422)
       return res.end()
     }
@@ -48,7 +47,7 @@ app.get('/shoot', async (req, res) => {
 app.listen(PORT, () => console.log(`Hotshot listening on port ${PORT}.`))
 
 async function takeScreenshot (url, selector, padding = 0) {
-  let screenshot;
+  let screenshot
   const browser = await puppeteer.launch({
     args: [
       '--no-sandbox',
@@ -73,7 +72,7 @@ async function takeScreenshot (url, selector, padding = 0) {
   }, selector)
 
   if (rect) {
-    const screenshot = await page.screenshot({
+    screenshot = await page.screenshot({
       clip: {
         x: rect.left - padding,
         y: rect.top - padding,
@@ -81,7 +80,7 @@ async function takeScreenshot (url, selector, padding = 0) {
         height: rect.height + padding * 2
       }
     })
-    console.log(`📸 ${target} => ${selector}`)
+    console.log(`📸 ${url} => ${selector}`)
   } else {
     console.error(`💥 Can't find selector ${selector}`)
   }
