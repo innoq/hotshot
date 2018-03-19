@@ -8,12 +8,12 @@ const TIMEOUT = process.env.TIMEOUT || 5000
 const PORT = process.env.PORT || 5000
 
 if (!TARGET_HOST) {
-  console.error("💥 Missing target host name, exiting.")
+  console.error('💥 Missing target host name, exiting.')
   process.exit(1)
 }
 
 app.get('/', (req, res) => {
-  res.send("GET /shoot?path=…&selector=… to take a screenshot")
+  res.send('GET /shoot?path=…&selector=… to take a screenshot')
 })
 
 app.get('/shoot', async (req, res) => {
@@ -34,7 +34,7 @@ app.get('/shoot', async (req, res) => {
     const screenshot = await takeScreenshot(target, selector, padding)
     res.type('image/png')
     res.send(screenshot)
-  } catch(e) {
+  } catch (e) {
     console.error(e)
     res.status(500)
     res.end()
