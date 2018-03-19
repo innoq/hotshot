@@ -4,7 +4,7 @@ const express = require('express')
 const app = express()
 
 const TARGET_HOST = process.env.TARGET_HOST
-const TIMEOUT = 30000
+const TIMEOUT = 5000
 const PORT = process.env.PORT || 5000;
 
 if (!TARGET_HOST) {
