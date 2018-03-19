@@ -28,12 +28,16 @@ app.get('/shoot', async (req, res) => {
 
   const target = url.resolve(TARGET_HOST, path)
 
-  console.log(`📸 ${target} => ${selector}`)
-
   try {
     const screenshot = await takeScreenshot(target, selector, padding)
-    res.type('image/png')
-    res.send(screenshot)
+    if (screenshot) {
+      res.type('image/png')
+      res.send(screenshot)
+    }
+    else {
+      res.status(422)
+      return res.end()
+    }
   } catch (e) {
     console.error(e)
     res.status(500)
@@ -44,6 +48,7 @@ app.get('/shoot', async (req, res) => {
 app.listen(PORT, () => console.log(`Hotshot listening on port ${PORT}.`))
 
 async function takeScreenshot (url, selector, padding = 0) {
+  let screenshot;
   const browser = await puppeteer.launch({
     args: [
       '--no-sandbox',
@@ -60,20 +65,27 @@ async function takeScreenshot (url, selector, padding = 0) {
 
   const rect = await page.evaluate(selector => {
     const element = document.querySelector(selector)
+    if (!element) {
+      return null
+    }
     const { x, y, width, height } = element.getBoundingClientRect()
     return { left: x, top: y, width, height, id: element.id }
   }, selector)
 
-  const screenshot = await page.screenshot({
-    clip: {
-      x: rect.left - padding,
-      y: rect.top - padding,
-      width: rect.width + padding * 2,
-      height: rect.height + padding * 2
-    }
-  })
+  if (rect) {
+    const screenshot = await page.screenshot({
+      clip: {
+        x: rect.left - padding,
+        y: rect.top - padding,
+        width: rect.width + padding * 2,
+        height: rect.height + padding * 2
+      }
+    })
+    console.log(`📸 ${target} => ${selector}`)
+  } else {
+    console.error(`💥 Can't find selector ${selector}`)
+  }
 
-  await browser.close()
-
+  browser.close()
   return screenshot
 }
