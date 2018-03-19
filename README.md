@@ -12,9 +12,7 @@ Build image:
 
 Start server:
 
-    $ docker run -p 5000:5000 \
-                 --shm-size 1G \
-                 -e TARGET_HOST='https://www.innoq.com' innoq/hotshot
+    $ docker run -p 5000:5000 -e TARGET_HOST='https://www.innoq.com' innoq/hotshot
 
 Request a screenshot:
 
