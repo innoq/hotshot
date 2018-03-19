@@ -1,13 +1,11 @@
 language: node_js
 node_js:
 - '9'
+env:
+  global:
+    secure: ZqEhyADR50yAmAGrrtqaNWOPTQLBaaooV57wFQe+Am4Bk7yMZlBUCLfoLY50uthrOoz0OgL18No4d6L2ODS09GB+PJ4tbYNaCHnm2hf8RMvyOomKV9ETnQJVFCbDSRZNXF5ppC3kHvsds5AiBTtn7JI6f5j1lYXat06UnqFXiaAu8/CkQWD563zgI0U9hFcZ1wUQzLiwMr3JWOOpMOF1lwDWPbJaVZh/JrQtgw489GcXKFIc4CvaWZhPMqKd0uXVlMQwG3wUkD6NWzKX+VynJ75h4iqrYhpO7Roh37O/R39Fbq/pHv/FJmYhRfOteARdLyBERfFqtKsbN+Zva1GNNU1Kw9EeF7aIDRsE3PLgcPz9Hsi6P2uySArHO70JeGbJazKiZzZtAFq/tapWEiyhr6qLEz/85WOWZ13kRN3rqQgjiSOcov9eqd5bjz95CDNIl9yiDgjcLlw2hwogQu5hOfjSz2nQQ0GE+LCGiA/vJrBanaaKUMTekhrIT4DJpr4d4TmmvOaMaYklhmzGbcBmBYWiE845riGZfmfWpJ59JHU32BmRinb5V1jyiMjKTJ5Gs2rAif7QthEkxcTjGXirDu3QX6mo+xXyuf17/ZJPKd2n54lqfkoMxWUP6xoHGBkGQkOQJcB0KhYbCvMeB2nwgHUL6f+DEzmnByqUngTWK0U=
 script:
 - npm test
-deploy:
-  provider: heroku
-  api_key:
-    secure: J6ANIhEr5gW2TybZbDDAkbotQpi8L8A9cq72DxJiX619EMIl8sREUcNEZhOw8GJC5gVZDe6khhWn+tpvXzV25U84N3idY+UeSpZkpCb41VtAPgi0CRpVqiPgLWIP1S99cxMT01W18FbpGAvg85AFUKfF2qJQ8KxuOglQ0DAAg83UwtrqYdSZ7qGBmwpq8EPiPeuckc/o5ljhs65/lU2uKUQoE9eg3L3DOqNCd/8bvXEQ6zyJeHBjqLL8w2dMBJI4SRo3sBM0ie13LHTBidjgi/FvRSZQZsBb6j8OKsqskuNcBo+pfYAwZ8JdRnjupNhp05GcNraf0T7nB0c64yf21sJ08GKDx21WUTE+Xct0qWfEf/1o+obld0M/nmifdwUwTI1+U92d6HcwKJbHbR5CIcqp0TMwDvIhq575nfDz0jxdpCZeuGFKFdnd9F0rp3+RA+W+u0MPY+srYQE9Yceq4FyfT0r5Bqw9B1q1k10y/+qknqqDv+p6ygN1PEkChvG8mMsBzsdPuweapDZ731J12YeiqiprtMXhRg33CQtCHTg2nPumJhoPX52DuCcBCT7yR+cec5uF0kuypL4IpHEleqzsFH2YWpjKTnXKlHlzscuksB3ZqXkKRmhaFM5PODwM7IlSOZAuR/9IiyUu6CGThJy3ZAwdZ5PueRbHj6CP2P0=
-  app: hotshot-production
-  on:
-    repo: innoq/hotshot
-    branch: master
+- docker login -u _ -p "$HEROKU_TOKEN" registry.heroku.com
+- docker build -t registry.heroku.com/hotshot-production/web .
+- docker push registry.heroku.com/hotshot-production/web
