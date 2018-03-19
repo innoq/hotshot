@@ -5,7 +5,9 @@ env:
   global:
     secure: ZqEhyADR50yAmAGrrtqaNWOPTQLBaaooV57wFQe+Am4Bk7yMZlBUCLfoLY50uthrOoz0OgL18No4d6L2ODS09GB+PJ4tbYNaCHnm2hf8RMvyOomKV9ETnQJVFCbDSRZNXF5ppC3kHvsds5AiBTtn7JI6f5j1lYXat06UnqFXiaAu8/CkQWD563zgI0U9hFcZ1wUQzLiwMr3JWOOpMOF1lwDWPbJaVZh/JrQtgw489GcXKFIc4CvaWZhPMqKd0uXVlMQwG3wUkD6NWzKX+VynJ75h4iqrYhpO7Roh37O/R39Fbq/pHv/FJmYhRfOteARdLyBERfFqtKsbN+Zva1GNNU1Kw9EeF7aIDRsE3PLgcPz9Hsi6P2uySArHO70JeGbJazKiZzZtAFq/tapWEiyhr6qLEz/85WOWZ13kRN3rqQgjiSOcov9eqd5bjz95CDNIl9yiDgjcLlw2hwogQu5hOfjSz2nQQ0GE+LCGiA/vJrBanaaKUMTekhrIT4DJpr4d4TmmvOaMaYklhmzGbcBmBYWiE845riGZfmfWpJ59JHU32BmRinb5V1jyiMjKTJ5Gs2rAif7QthEkxcTjGXirDu3QX6mo+xXyuf17/ZJPKd2n54lqfkoMxWUP6xoHGBkGQkOQJcB0KhYbCvMeB2nwgHUL6f+DEzmnByqUngTWK0U=
 script:
+- set -e
 - npm test
 - docker login -u _ -p "$HEROKU_TOKEN" registry.heroku.com
 - docker build -t registry.heroku.com/hotshot-production/web .
 - docker push registry.heroku.com/hotshot-production/web
+- set +e
