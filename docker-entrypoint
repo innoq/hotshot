@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+
+set -ex
+
+exec passenger start --port $PORT --user pptruser --min-instances 2
