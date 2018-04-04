@@ -39,7 +39,7 @@ COPY --chown=pptruser:pptruser . /app
 
 EXPOSE 5000
 
-ENV PASSENGER_MAX_POOL_SIZE=2
+ENV NODE_ENV=production
 
 ENTRYPOINT ["dumb-init", "--"]
 CMD ["./docker-entrypoint"]

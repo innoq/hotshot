@@ -2,4 +2,4 @@
 
 set -ex
 
-exec passenger start --port $PORT --user pptruser --min-instances 2
+exec passenger start --port $PORT --user pptruser --environment $NODE_ENV
