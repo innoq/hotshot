@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+set -ex
+docker login -u _ -p "$HEROKU_TOKEN" registry.heroku.com
+docker build -t registry.heroku.com/hotshot-production/web .
+docker push registry.heroku.com/hotshot-production/web
