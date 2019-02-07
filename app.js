@@ -1,7 +1,7 @@
 const Raven = require('raven')
 const puppeteer = require('puppeteer')
-const url = require('url')
 const express = require('express')
+const URL = require('url').URL
 const app = express()
 const gm = require('gm')
 
@@ -32,7 +32,7 @@ app.get('/shoot', async (req, res) => {
     return res.end()
   }
 
-  const target = url.resolve(TARGET_HOST, path)
+  const target = new URL(path, TARGET_HOST)
 
   try {
     const screenshot = await takeScreenshot(target, selector, padding)
