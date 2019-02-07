@@ -3,14 +3,11 @@ services:
 - docker
 node_js:
 - '11'
-env:
-  global:
-    secure:
-      "hH18qT3NGk1zyxtGUKgvmoPME2RvIqcdDH8hMS101iuMRNf7Z/EU79ixwxzaMw4g5PNRdBLWj4JSkQOlx8nEkW3KEuzoCRFKnL2zbxqNGXhNrloAXIIJCNsbOshU6/bjglkWMl4NYwn24fugnEtP+YBAEShv/DB9ioDyQgMBXWyltzARPREwZ4Ttaq69r9/ndvlFb9CU2PaxqXVQUMB6V625+ubQfnDUk3AAvQkBgRV8Xmu4MxvyzWiveT+xpyTd5ws8O9toDBBWjDxI+bG8crtI/w71DMvNgRed5QwC1zi3EwtgjwAHGXmsWewh/UVbhHaFJc15f+W43r6OZdH4LjV8ptWaDbGByT9gM9E75TbPQp8uJqBu9ezXSis1nBZlam/5kGs0KZSKnx4tjNlNIFS9o9xrhEDifFz7+V/ZshPi3i8mQaBzULrOe3JD0lXFpz5ifcciFxGaYPFKIQ9a2QjqThvrygjf2C+vm5tYzTGtESPYbuYU3/oXQesxmQfJUL3SgcB50Y7F+L9JnkOIbSQzKvw0v3nTHMKfhxoS33k/A4kkjZgGXFHQvWRm1LcqqzO8OUjbCianNLrJdzUZvlQxbulBiT2KrnyAtxuxT3jEkn/vgtjgPJqADykhfo9MhYB5CLaRkIBVaea+LJk364+XiExx4X83BW9oAQ1Xy6M="
 script:
 - npm test
 deploy:
-  provider: script
-  script: bash scripts/deploy
-  on:
-    branch: master
+  provider: heroku
+  app: hotshot-production
+  on: master
+  api_key:
+    secure: UP4ZVX4o7MB2u/7NfWm7CK61uXZ7AGE2RRD/oC3MmaIOutNztL3gawBNvw0Qu5r3W5Xks8ZzMmABFWnlSGy+a+Fe79iPC4vIssoYj7mOnEr3kZZICA/QT6wXtu6vmfP7FfOr8ZPVEZPN/wjeqFYMu1ROg6UIVM+oHGUhGSOha3+/HnHUvFEFfHStPmix8oPwO5t+kE8bEXWvyqYTO/asmLbZaVu27kyILfyPOO+Mu+HAVMjEt3wnv9pESm5JrDTU0BL7INeRJ+fJKS+Ww9m36uAkWb/X84xP+4a87xTbXlQQsG+V6AtE5IGhoAWW6wQpd9Mhf6akybfHmQ8N5RBDU6laPNz9uDbFGkBcu0j583er9oxh6GRsCd0s0k6xleZifM5wZYhLXJha/tzr2+vFA12PMaU6flPijAwUFRiwYycAfb9pVz7KC8HQ6B9A2zSf3uYAa/GKXdQl1Ro/3ZW9puPY0JkG1X7mC+gofS+P3O7zw9YwKqJuSrqXSsq8JAbOQOVuvGeayKXOCAJtYnH9z/XSPuY2nte9XFjOkNjPjmEha5CtoFHhybwCkfBIpj8oowcH1fAWdo6R2OdfWK7AX2sNp0Hw5srtJuaqkooL99hkH5nM29jMpm5MwLPRZ4CoyUOyMUi7bPVHFnt2Qu2fHZgGNSgAH4oJOiUh208caL0=
