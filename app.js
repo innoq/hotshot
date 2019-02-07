@@ -39,7 +39,7 @@ app.get('/shoot', async (req, res) => {
     const screenshot = await takeScreenshot(target, selector, padding)
     if (screenshot) {
       res.type('image/png')
-      res.header('Cache-Control', 'max-age=600, public, must-revalidate')
+      res.header('Cache-Control', 'max-age=600, public')
       res.header('ETag', etag(screenshot))
       res.send(screenshot)
     } else {
