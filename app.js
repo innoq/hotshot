@@ -4,7 +4,6 @@ const express = require('express')
 const URL = require('url').URL
 const app = express()
 const gm = require('gm')
-const etag = require('etag')
 
 if (process.env.NODE_ENV === 'production' && process.env.RAVEN_ENDPOINT) {
   Raven.config(process.env.RAVEN_ENDPOINT).install()
@@ -39,8 +38,7 @@ app.get('/shoot', async (req, res) => {
     const screenshot = await takeScreenshot(target, selector, padding)
     if (screenshot) {
       res.type('image/png')
-      res.header('Cache-Control', 's-max-age=600, public, must-revalidate')
-      res.header('ETag', etag(screenshot))
+      res.header('Cache-Control', 'max-age=600, s-max-age=600, public, must-revalidate')
       res.send(screenshot)
     } else {
       res.status(422)
