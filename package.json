@@ -8,7 +8,7 @@
   "license": "Apache 2.0",
   "private": true,
   "engines": {
-    "npm": "11.6.0"
+    "node": "11.6.0"
   },
   "scripts": {
     "test": "eslint --cache ."
