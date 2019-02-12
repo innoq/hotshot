@@ -16,7 +16,6 @@
   },
   "dependencies": {
     "express": "^4.16.4",
-    "gm": "^1.23.1",
     "npm": "^6.7.0",
     "puppeteer": "^1.12.2",
     "raven": "^2.6.4"

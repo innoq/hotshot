@@ -3,7 +3,6 @@ const puppeteer = require('puppeteer')
 const express = require('express')
 const URL = require('url').URL
 const app = express()
-const gm = require('gm')
 
 if (process.env.NODE_ENV === 'production' && process.env.RAVEN_ENDPOINT) {
   Raven.config(process.env.RAVEN_ENDPOINT).install()
@@ -53,19 +52,6 @@ app.get('/shoot', async (req, res) => {
 
 app.listen(PORT, () => console.log(`Hotshot listening on port ${PORT}.`))
 
-function postprocess (screenshot) {
-  return new Promise(function (resolve, reject) {
-    gm(screenshot, 'screenshot.png')
-      .stroke('#6d6de7')
-      .drawLine(0, 1, 0, 4)
-      .transparent('#6d6de7')
-      .toBuffer('PNG', function (err, data) {
-        if (!err) resolve(data)
-        else reject(err)
-      })
-  })
-}
-
 async function takeScreenshot (url, selector, padding = 0) {
   let screenshot
   const browser = await puppeteer.launch({
@@ -99,7 +85,7 @@ async function takeScreenshot (url, selector, padding = 0) {
         width: rect.width + padding * 2,
         height: rect.height + padding * 2
       }
-    }).then(postprocess)
+    })
     console.log(`📸 ${url} => ${selector}`)
   } else {
     console.error(`💥 Can't find selector ${selector}`)
