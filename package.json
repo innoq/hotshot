@@ -2,17 +2,20 @@
   "name": "hotshot",
   "version": "1.0.0",
   "description": "Takes screenshots of DOM elements",
-  "main": "index.js",
+  "main": "app.js",
   "repository": "https://gitlab.innoq.com/innoq/hotshot",
   "author": "Robert Glaser",
   "license": "Apache 2.0",
   "private": true,
+  "engines": {
+    "node": "11.x"
+  },
   "scripts": {
+    "start": "node app.js",
     "test": "eslint --cache ."
   },
   "dependencies": {
     "express": "^4.16.4",
-    "gm": "^1.23.1",
     "npm": "^6.7.0",
     "puppeteer": "^1.12.2",
     "raven": "^2.6.4"
