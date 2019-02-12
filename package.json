@@ -7,6 +7,9 @@
   "author": "Robert Glaser",
   "license": "Apache 2.0",
   "private": true,
+  "engines": {
+    "npm": "11.x"
+  },
   "scripts": {
     "test": "eslint --cache ."
   },
