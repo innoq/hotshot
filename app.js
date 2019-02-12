@@ -11,6 +11,7 @@ if (process.env.NODE_ENV === 'production' && process.env.RAVEN_ENDPOINT) {
 const TARGET_HOST = process.env.TARGET_HOST
 const TIMEOUT = process.env.TIMEOUT || 5000
 const PORT = process.env.PORT || 5000
+const MAX_AGE = process.env.MAX_AGE || 600
 
 if (!TARGET_HOST) {
   console.error('💥 Missing target host name, exiting.')
@@ -37,7 +38,7 @@ app.get('/shoot', async (req, res) => {
     const screenshot = await takeScreenshot(target, selector, padding)
     if (screenshot) {
       res.type('image/png')
-      res.header('Cache-Control', 'max-age=600, s-max-age=600, public, must-revalidate')
+      res.header('Cache-Control', `max-age=${MAX_AGE}, s-max-age=${MAX_AGE}, public, must-revalidate`)
       res.send(screenshot)
     } else {
       res.status(422)
