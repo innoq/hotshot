@@ -1,10 +1,8 @@
 language: node_js
-services:
-- docker
 node_js:
 - '11'
 script:
-- npm test
+- yarn test
 deploy:
   provider: heroku
   app: hotshot-production
