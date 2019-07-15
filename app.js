@@ -65,7 +65,7 @@ async function takeScreenshot (url, selector, padding = 0) {
   const page = await browser.newPage()
 
   page.setDefaultNavigationTimeout(TIMEOUT)
-  page.setViewport({ width: 1920, height: 1080, deviceScaleFactor: 2 })
+  page.setViewport({ width: 1200, height: 628, deviceScaleFactor: 2 })
 
   await page.goto(url, { waitUntil: 'networkidle2' })
 
