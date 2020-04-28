@@ -1,12 +1,8 @@
-const Raven = require('raven')
 const puppeteer = require('puppeteer')
 const express = require('express')
 const URL = require('url').URL
 const app = express()
 
-if (process.env.NODE_ENV === 'production' && process.env.RAVEN_ENDPOINT) {
-  Raven.config(process.env.RAVEN_ENDPOINT).install()
-}
 
 const TARGET_HOST = process.env.TARGET_HOST
 const TIMEOUT = process.env.TIMEOUT || 5000
