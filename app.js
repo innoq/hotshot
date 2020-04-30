@@ -21,6 +21,8 @@ app.get('/', (req, res) => {
 app.get('/shoot', async (req, res) => {
   const path = req.query.path
   const selector = req.query.selector
+  const vpwidth = req.query.vpw * 1 || 1400
+  const vpheight = req.query.vph * 1 || 700
   const padding = parseInt(req.query.padding) || 0
 
   if (!path || !selector) {
@@ -31,7 +33,7 @@ app.get('/shoot', async (req, res) => {
   const target = new URL(path, TARGET_HOST)
 
   try {
-    const screenshot = await takeScreenshot(target, selector, padding)
+    const screenshot = await takeScreenshot(target, selector, padding, vpwidth, vpheight)
     if (screenshot) {
       res.type('image/jpeg')
       res.header('Cache-Control', `max-age=${MAX_AGE}, s-max-age=${MAX_AGE}, public, must-revalidate`)
@@ -49,7 +51,7 @@ app.get('/shoot', async (req, res) => {
 
 app.listen(PORT, () => console.log(`Hotshot listening on port ${PORT}.`))
 
-async function takeScreenshot (url, selector, padding = 0) {
+async function takeScreenshot (url, selector, padding = 0, vpwidth, vpheight) {
   let screenshot
   const browser = await puppeteer.launch({
     args: [
@@ -61,7 +63,7 @@ async function takeScreenshot (url, selector, padding = 0) {
   const page = await browser.newPage()
 
   page.setDefaultNavigationTimeout(TIMEOUT)
-  page.setViewport({ width: 1400, height: 700, deviceScaleFactor: 2 })
+  page.setViewport({ width: vpwidth, height: vpheight, deviceScaleFactor: 2 })
 
   await page.goto(url, { waitUntil: 'networkidle2' })
 
