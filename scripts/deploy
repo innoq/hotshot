@@ -1,7 +1,0 @@
-#!/bin/bash
-set -ex
-
-echo "$HEROKU_TOKEN" | docker login -u _ --password-stdin registry.heroku.com
-docker build -t registry.heroku.com/hotshot-production/web .
-docker push registry.heroku.com/hotshot-production/web
-heroku container:release web --app hotshot-production
