@@ -66,6 +66,10 @@ async function takeScreenshot (url, selector, padding = 0, vpwidth, vpheight) {
   page.setViewport({ width: vpwidth, height: vpheight, deviceScaleFactor: 2 })
 
   await page.goto(url, { waitUntil: 'networkidle2' })
+            .catch((err) => { 
+              browser.close()
+              throw err
+            })
 
   const rect = await page.evaluate(selector => {
     const element = document.querySelector(selector)
