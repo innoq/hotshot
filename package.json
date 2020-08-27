@@ -16,15 +16,15 @@
   },
   "dependencies": {
     "express": "^4.17.1",
-    "npm": "^6.13.7",
-    "puppeteer": "^2.1.1",
+    "npm": "^6.14.8",
+    "puppeteer": "^5.2.1",
     "raven": "^2.6.4"
   },
   "devDependencies": {
-    "eslint": "^6.8.0",
-    "eslint-config-standard": "^14.1.0",
-    "eslint-plugin-import": "^2.20.1",
-    "eslint-plugin-node": "^11.0.0",
+    "eslint": "^7.7.0",
+    "eslint-config-standard": "^14.1.1",
+    "eslint-plugin-import": "^2.22.0",
+    "eslint-plugin-node": "^11.1.0",
     "eslint-plugin-promise": "^4.2.1",
     "eslint-plugin-standard": "^4.0.1"
   }
