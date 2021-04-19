@@ -23,4 +23,4 @@ Start server:
 
 ## Request a screenshot:
 
-    $ curl -G "http://localhost:5000/shoot?path=/relative/path&selector=.my-css-class" > screenshot.png
+    $ curl -G "http://localhost:5000/shoot?path=/relative/path&selector=.my-css-class" > screenshot.jpeg
