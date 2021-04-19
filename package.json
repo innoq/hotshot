@@ -8,7 +8,7 @@
   "license": "Apache 2.0",
   "private": true,
   "engines": {
-    "node": "14.x"
+    "node": "15.x"
   },
   "scripts": {
     "start": "node app.js",
