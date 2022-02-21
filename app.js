@@ -37,9 +37,13 @@ app.get('/shoot', async (req, res) => {
   const target = new URL(path, TARGET_HOST)
 
   try {
-    const screenshot = await takeScreenshot(target, selector, padding)
+    let format = 'jpeg'
+    if (req.accepts('image/webp')) {
+      format = 'webp'
+    }
+    const screenshot = await takeScreenshot(target, selector, padding, format)
     if (screenshot) {
-      res.type('image/jpeg')
+      res.type('image/' + format)
       res.header('Cache-Control', `max-age=${MAX_AGE}, s-max-age=${MAX_AGE}, public`)
       res.send(screenshot)
     } else {
@@ -55,7 +59,7 @@ app.get('/shoot', async (req, res) => {
 
 app.listen(PORT, () => console.log(`Hotshot listening on port ${PORT}.`))
 
-async function takeScreenshot (url, selector, padding = 0) {
+async function takeScreenshot (url, selector, padding = 0, format = 'jpeg') {
   let screenshot
   const browser = await puppeteer.launch({
     args: [
@@ -86,7 +90,7 @@ async function takeScreenshot (url, selector, padding = 0) {
 
   if (rect) {
     screenshot = await page.screenshot({
-      type: 'jpeg',
+      type: format,
       quality: 80,
       clip: {
         x: rect.left - padding,
