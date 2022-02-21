@@ -37,8 +37,8 @@ app.get('/shoot', async (req, res) => {
   try {
     const screenshot = await takeScreenshot(target, selector, padding)
     if (screenshot) {
-      res.header('Cache-Control', `max-age=${MAX_AGE}, s-max-age=${MAX_AGE}, public, must-revalidate`)
       res.type('image/webp')
+      res.header('Cache-Control', `max-age=${MAX_AGE}, s-max-age=${MAX_AGE}, public`)
       res.send(screenshot)
     } else {
       res.status(422)
