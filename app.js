@@ -39,7 +39,7 @@ app.get('/shoot', async (req, res) => {
   try {
     const screenshot = await takeScreenshot(target, selector, padding)
     if (screenshot) {
-      res.type('image/webp')
+      res.type('image/jpeg')
       res.header('Cache-Control', `max-age=${MAX_AGE}, s-max-age=${MAX_AGE}, public`)
       res.send(screenshot)
     } else {
@@ -86,7 +86,7 @@ async function takeScreenshot (url, selector, padding = 0) {
 
   if (rect) {
     screenshot = await page.screenshot({
-      type: 'webp',
+      type: 'jpeg',
       quality: 80,
       clip: {
         x: rect.left - padding,
