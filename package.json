@@ -1,6 +1,6 @@
 {
   "name": "hotshot",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Takes screenshots of DOM elements",
   "main": "app.js",
   "repository": "https://github.com/innoq/hotshot",
