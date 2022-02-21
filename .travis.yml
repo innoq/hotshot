@@ -1,11 +1,11 @@
 language: node_js
 node_js:
-- '15'
+- '17'
 script:
 - yarn test
 deploy:
   provider: heroku
   app: hotshot-production
-  on: master
+  on: main
   api_key:
     secure: UP4ZVX4o7MB2u/7NfWm7CK61uXZ7AGE2RRD/oC3MmaIOutNztL3gawBNvw0Qu5r3W5Xks8ZzMmABFWnlSGy+a+Fe79iPC4vIssoYj7mOnEr3kZZICA/QT6wXtu6vmfP7FfOr8ZPVEZPN/wjeqFYMu1ROg6UIVM+oHGUhGSOha3+/HnHUvFEFfHStPmix8oPwO5t+kE8bEXWvyqYTO/asmLbZaVu27kyILfyPOO+Mu+HAVMjEt3wnv9pESm5JrDTU0BL7INeRJ+fJKS+Ww9m36uAkWb/X84xP+4a87xTbXlQQsG+V6AtE5IGhoAWW6wQpd9Mhf6akybfHmQ8N5RBDU6laPNz9uDbFGkBcu0j583er9oxh6GRsCd0s0k6xleZifM5wZYhLXJha/tzr2+vFA12PMaU6flPijAwUFRiwYycAfb9pVz7KC8HQ6B9A2zSf3uYAa/GKXdQl1Ro/3ZW9puPY0JkG1X7mC+gofS+P3O7zw9YwKqJuSrqXSsq8JAbOQOVuvGeayKXOCAJtYnH9z/XSPuY2nte9XFjOkNjPjmEha5CtoFHhybwCkfBIpj8oowcH1fAWdo6R2OdfWK7AX2sNp0Hw5srtJuaqkooL99hkH5nM29jMpm5MwLPRZ4CoyUOyMUi7bPVHFnt2Qu2fHZgGNSgAH4oJOiUh208caL0=
