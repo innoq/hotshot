@@ -4,6 +4,8 @@ const express = require('express')
 const URL = require('url').URL
 const app = express()
 
+app.set('etag', 'strong')
+
 if (process.env.NODE_ENV === 'production' && process.env.RAVEN_ENDPOINT) {
   Raven.config(process.env.RAVEN_ENDPOINT).install()
 }
