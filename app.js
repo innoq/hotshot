@@ -3,6 +3,7 @@ const puppeteer = require('puppeteer')
 const express = require('express')
 const URL = require('url').URL
 const app = express()
+const negotiate = require('express-negotiate')
 
 app.set('etag', 'strong')
 
@@ -37,15 +38,24 @@ app.get('/shoot', async (req, res) => {
   const target = new URL(path, TARGET_HOST)
 
   try {
-    let format = 'jpeg'
-    if (req.accepts('image/webp')) {
-      format = 'webp'
-    }
+    let format
+    req.negotiate({
+      'image/jpeg;q=1.1': () => {
+        format = 'jpeg'
+      },
+      'image/webp;q=0.9': () => {
+        format = 'webp'
+      },
+      'default': () => {
+        format = 'jpeg'
+      }
+    })
+    console.log(`accept: ${req.headers['accept']}, sending ${format}...`)
+
     const screenshot = await takeScreenshot(target, selector, padding, format)
     if (screenshot) {
       res.type('image/' + format)
       res.header('Cache-Control', `max-age=${MAX_AGE}, s-max-age=${MAX_AGE}, public`)
-      console.log(`accept: ${req.headers['accept']}`)
       res.send(screenshot)
     } else {
       res.status(422)
