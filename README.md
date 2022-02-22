@@ -31,4 +31,4 @@ Hotshot can serve webp images if requested in the `Accept` header. Example:
 
     $ curl -G -H "accept: image/webp" "http://localhost:5000/shoot?path=/relative/path&selector=.my-css-class" > screenshot.webp
 
-Please note: any Accept header values not directly specifying webp support (e. g. `*/*/`) automatically get served jpeg.
+Please note: any Accept header values not directly specifying webp support (e. g. `*/*`) automatically get served jpeg.
