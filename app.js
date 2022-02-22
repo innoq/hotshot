@@ -3,7 +3,7 @@ const puppeteer = require('puppeteer')
 const express = require('express')
 const URL = require('url').URL
 const app = express()
-const negotiate = require('express-negotiate')
+require('express-negotiate')
 
 app.set('etag', 'strong')
 
@@ -46,11 +46,11 @@ app.get('/shoot', async (req, res) => {
       'image/webp;q=0.9': () => {
         format = 'webp'
       },
-      'default': () => {
+      default: () => {
         format = 'jpeg'
       }
     })
-    console.log(`accept: ${req.headers['accept']}, sending ${format}...`)
+    console.log(`accept: ${req.headers.accept}, sending ${format}...`)
 
     const screenshot = await takeScreenshot(target, selector, padding, format)
     if (screenshot) {
