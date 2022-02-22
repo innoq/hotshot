@@ -45,6 +45,7 @@ app.get('/shoot', async (req, res) => {
     if (screenshot) {
       res.type('image/' + format)
       res.header('Cache-Control', `max-age=${MAX_AGE}, s-max-age=${MAX_AGE}, public`)
+      console.log(`accept: ${req.headers['accept']}`)
       res.send(screenshot)
     } else {
       res.status(422)
