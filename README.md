@@ -19,7 +19,7 @@ Build image:
 
 Start server:
 
-    $ docker run -p 5000:5000 -e PORT=5000 -e TARGET_HOST='https://www.innoq.com' innoq/hotshot
+    $ docker run --init -p 5000:5000 -e PORT=5000 -e TARGET_HOST='https://www.innoq.com' innoq/hotshot
 
 ## Request a screenshot
 
